@@ -10,11 +10,16 @@ import UIKit
 
 protocol ChartViewDataSource:NSObjectProtocol
 {
-    
+//    竖直的分割线条数
     func numberOfVerticalLinesInChartView(chartView: ChartView) -> Int // Default is 3
+//    水平的分割线条数
     func numberOfHorizontalLinesInChartView(chartView: ChartView) -> Int // Default is 3
+//    线条的条数
     func numberOfLinesInChartView(chartView:ChartView) -> Int // Default is 0
+//    对应的竖直
     func valuesOfchartView(chartView:ChartView, withIndex:Int) -> [Float]?
+    
+    
     
 }
 
@@ -38,6 +43,8 @@ class ChartView: UIView {
         xInset = 15;
         lineWidth = 0.5;
         debugMode = true
+        
+        
         
         
     }
@@ -170,8 +177,15 @@ class ChartView: UIView {
             numberOfLines = self.dataSource!.numberOfLinesInChartView(self)
         }
         
+        
+        
+        
         for i in 0...numberOfLines{
             var values = self.dataSource?.valuesOfchartView(self, withIndex: i)
+            
+            
+            
+            
             if let valueArray = values {
                 var max:Float = 0
                 var min:Float = 0;
@@ -223,6 +237,7 @@ class ChartView: UIView {
                     var point:CGPoint
                     
                     var percent:CGFloat = CGFloat(valueArray[i] - min)/CGFloat(dValue)
+                    
                     //                    println(percent)
                     var x = CGFloat(xInset) + (CGFloat(xStride)*CGFloat(i))
                     

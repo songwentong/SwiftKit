@@ -56,6 +56,10 @@ class TableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        self.performSegueWithIdentifier("chart", sender: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.

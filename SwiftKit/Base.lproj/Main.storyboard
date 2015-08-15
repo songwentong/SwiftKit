@@ -56,7 +56,7 @@
         <!--Chart View Controller-->
         <scene sceneID="q94-a5-V3F">
             <objects>
-                <viewController id="bYe-6P-h6j" customClass="ChartViewController" customModule="SwiftKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="bYe-6P-h6j" customClass="ChartViewController" customModule="SwiftKit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rzQ-74-Xas"/>
                         <viewControllerLayoutGuide type="bottom" id="igc-x0-bha"/>
