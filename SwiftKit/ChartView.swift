@@ -237,7 +237,10 @@ class ChartView: UIView {
                     var point:CGPoint
                     
                     var percent:CGFloat = CGFloat(valueArray[i] - min)/CGFloat(dValue)
-                    
+//                    如果数值没有发生变化,所有的percent设置成0.5
+                    if(dValue == 0){
+                        percent = 0.5
+                    }
                     //                    println(percent)
                     var x = CGFloat(xInset) + (CGFloat(xStride)*CGFloat(i))
                     
