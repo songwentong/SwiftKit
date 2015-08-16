@@ -15,11 +15,98 @@ public class WTRequestCenter: NSObject {
         return WTRequestCenter()
         }()
     
+//    public func request(
+//        method: Method,
+//        _ URLString: URLStringConvertible,
+//        parameters: [String: AnyObject]? = nil,
+//        encoding: ParameterEncoding = .URL,
+//        headers: [String: String]? = nil)
+//        -> Request
+//    {
+//        let mutableURLRequest = URLRequest(method, URLString, headers: headers)
+//        let encodedURLRequest = encoding.encode(mutableURLRequest, parameters: parameters).0
+//        return request(encodedURLRequest)
+//    }
+//    
+    
+    
+    
+    
+    
+    public func encode(URLRequest: URLRequestConvertible, parameters: [String: AnyObject]?) -> (NSMutableURLRequest, NSError?) {
+        
+        var mutableURLRequest: NSMutableURLRequest = URLRequest.URLRequest.mutableCopy() as! NSMutableURLRequest
+        
+        if parameters == nil {
+            return (mutableURLRequest, nil)
+        }
+        
+        var error: NSError? = nil
+        
+        func query(parameters: [String: AnyObject]) -> String {
+            var components: [(String, String)] = []
+            for key in sorted(Array(parameters.keys), <) {
+                let value: AnyObject! = parameters[key]
+                components += queryComponents(key, value)
+            }
+            
+            return join("&", components.map { "\($0)=\($1)" } as [String])
+        }
+        
+        func encodesParametersInURL(method: Method) -> Bool {
+            switch method {
+            case .GET, .HEAD, .DELETE:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        if let method = Method(rawValue: mutableURLRequest.HTTPMethod) where encodesParametersInURL(method) {
+            if let URLComponents = NSURLComponents(URL: mutableURLRequest.URL!, resolvingAgainstBaseURL: false) {
+                URLComponents.percentEncodedQuery = (URLComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + query(parameters!)
+                mutableURLRequest.URL = URLComponents.URL
+            }
+        } else {
+            if mutableURLRequest.valueForHTTPHeaderField("Content-Type") == nil {
+                mutableURLRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            }
+            
+            mutableURLRequest.HTTPBody = query(parameters!).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        }
+        
+        
+        return (mutableURLRequest, error)
+        
+    }
+    func escape(string: String) -> String {
+        let generalDelimiters = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+        let subDelimiters = "!$&'()*+,;="
+        
+        let legalURLCharactersToBeEscaped: CFStringRef = generalDelimiters + subDelimiters
+        
+        return CFURLCreateStringByAddingPercentEscapes(nil, string, nil, legalURLCharactersToBeEscaped, CFStringBuiltInEncodings.UTF8.rawValue) as String
+    }
+    
+    func queryComponents(key: String,_ value: AnyObject) -> [(String, String)] {
+        var components: [(String, String)] = []
+        if let dictionary = value as? [String: AnyObject] {
+            for (nestedKey, value) in dictionary {
+                components += queryComponents("\(key)[\(nestedKey)]", value)
+            }
+        } else if let array = value as? [AnyObject] {
+            for value in array {
+                components += queryComponents("\(key)[]", value)
+            }
+        } else {
+            components.append((escape(key), escape("\(value)")))
+        }
+        
+        return components
+    }
+    
     
 }
-
-
-
 
 
 

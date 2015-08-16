@@ -20,6 +20,10 @@ class TableViewController: UITableViewController {
         
         list.append("Chart")
         
+        
+        
+       
+        
     }
     
     override func viewDidLoad() {
