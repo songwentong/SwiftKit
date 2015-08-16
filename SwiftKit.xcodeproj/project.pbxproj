@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E12BB96C1B8008C300A60B4F /* WTRequestCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12BB96B1B8008C300A60B4F /* WTRequestCenter.swift */; };
+		E12BB9711B800B4B00A60B4F /* WTNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12BB9701B800B4B00A60B4F /* WTNetWork.swift */; };
 		E1A993DE1B7F6C2100D93ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A993DD1B7F6C2100D93ACD /* AppDelegate.swift */; };
 		E1A993E31B7F6C2100D93ACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A993E11B7F6C2100D93ACD /* Main.storyboard */; };
 		E1A993E51B7F6C2100D93ACD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A993E41B7F6C2100D93ACD /* Images.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E12BB96B1B8008C300A60B4F /* WTRequestCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WTRequestCenter.swift; sourceTree = "<group>"; };
+		E12BB9701B800B4B00A60B4F /* WTNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WTNetWork.swift; sourceTree = "<group>"; };
 		E1A993D81B7F6C2100D93ACD /* SwiftKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A993DC1B7F6C2100D93ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A993DD1B7F6C2100D93ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E12BB96A1B8008A200A60B4F /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				E12BB9701B800B4B00A60B4F /* WTNetWork.swift */,
+				E12BB96B1B8008C300A60B4F /* WTRequestCenter.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
 		E1A993CF1B7F6C2100D93ACD = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +150,7 @@
 		E1A994031B7F72A000D93ACD /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				E12BB96A1B8008A200A60B4F /* HTTP */,
 				E1A994041B7F72B600D93ACD /* ChartView */,
 			);
 			name = Vender;
@@ -250,10 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12BB96C1B8008C300A60B4F /* WTRequestCenter.swift in Sources */,
 				E1A993DE1B7F6C2100D93ACD /* AppDelegate.swift in Sources */,
 				E1A993FE1B7F6C7D00D93ACD /* TableViewController.swift in Sources */,
 				E1A994021B7F726500D93ACD /* ChartViewController.swift in Sources */,
 				E1A994061B7F72C600D93ACD /* ChartView.swift in Sources */,
+				E12BB9711B800B4B00A60B4F /* WTNetWork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +467,7 @@
 				E1A993F91B7F6C2100D93ACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1A993FA1B7F6C2100D93ACD /* Build configuration list for PBXNativeTarget "SwiftKitTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +476,7 @@
 				E1A993FC1B7F6C2100D93ACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
