@@ -19,11 +19,14 @@ class TableViewController: UITableViewController {
         super.awakeFromNib()
         
         list.append("Chart")
-        
-        
-        
+   
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            
+        }) { (bool) -> Void in
+            
+        }
+
        
-        
     }
     
     override func viewDidLoad() {

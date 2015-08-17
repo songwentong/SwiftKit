@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>9E784DA8-F191-425A-B217-7FD3DB97F90D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>SwiftKit</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1A0E8F1F5B598868A3078F7884A09C9906F7DB21</key>
 		<string>https://github.com/swtlovewtt/SwiftKit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SwiftKit.xcodeproj</string>
+	<string>SwiftKit.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1A0E8F1F5B598868A3078F7884A09C9906F7DB21</key>

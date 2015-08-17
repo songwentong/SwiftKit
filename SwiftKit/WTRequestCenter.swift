@@ -15,18 +15,34 @@ public class WTRequestCenter: NSObject {
         return WTRequestCenter()
         }()
     
+    
+    
     public func request(
         method: Method,
         URLString: URLStringConvertible,
         parameters: [String: AnyObject]? = nil,
-        headers: [String: String]? = nil)
+        completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
+    {
+        self.request(method, URLString: URLString, parameters: parameters, headers: nil) { (data, response, error) -> Void in
+            completionHandler!(data,response,error)
+        }
+    }
+    /*
+        func dataTaskWithRequest(request: NSURLRequest, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?) -> NSURLSessionDataTask
+    */
+    public func request(
+        method: Method,
+        URLString: URLStringConvertible,
+        parameters: [String: AnyObject]? = nil,
+        headers: [String: String]? = nil,
+        completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
     {
         let mutableURLRequest = URLRequest(method, URLString, headers: headers)
         let encodedURLRequest = encode(mutableURLRequest, parameters: parameters).0
-        NSURLSession.sharedSession().dataTaskWithRequest(encodedURLRequest, completionHandler: { (data, response, error) -> Void in
-            
+        var task = NSURLSession.sharedSession().dataTaskWithRequest(encodedURLRequest, completionHandler: { (data, response, error) -> Void in
+            completionHandler!(data,response,error)
         })
-//        return encodedURLRequest
+        task.resume()
     }
     
     
