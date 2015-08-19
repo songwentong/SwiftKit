@@ -38,19 +38,25 @@ class ChartView: UIView {
     override init(frame: CGRect) {
         super.init(frame:CGRect())
         self.frame = frame;
+        
+        
+        configModel()
+        
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configModel()
+    }
+    
+    
+    func configModel(){
         self.backgroundColor = UIColor.yellowColor()
         yInset = 10;
         xInset = 15;
         lineWidth = 0.5;
         debugMode = true
-        
-        
-        
-        
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     
@@ -84,9 +90,9 @@ class ChartView: UIView {
     */
     override func drawRect(rect: CGRect) {
         if(debugMode==true){
-            println("drawRect")
+            print("drawRect")
         }
-        var path = UIBezierPath()
+        let path = UIBezierPath()
         
         UIColor.redColor().setFill()
         UIColor.redColor().setStroke()
@@ -100,9 +106,9 @@ class ChartView: UIView {
     
     //    画外框
     func drawOuterFrame(path:UIBezierPath){
-        var bounds = self.bounds
-        var width = CGRectGetWidth(bounds)
-        var height = CGRectGetHeight(bounds)
+        let bounds = self.bounds
+        let width = CGRectGetWidth(bounds)
+        let height = CGRectGetHeight(bounds)
         path.moveToPoint(CGPointMake(xInset, yInset))
         path.addLineToPoint(CGPointMake(xInset, height-yInset))
         path.addLineToPoint(CGPointMake(width-xInset, height-yInset))
@@ -136,9 +142,9 @@ class ChartView: UIView {
         //      横线的步幅
         var horizontalStride:CGFloat
         
-        var insetRect:CGRect = CGRectInset(self.bounds, xInset, yInset)
-        var insetHeight = CGRectGetHeight(insetRect)
-        var insetWidth = CGRectGetWidth(insetRect)
+        let insetRect:CGRect = CGRectInset(self.bounds, xInset, yInset)
+        let insetHeight = CGRectGetHeight(insetRect)
+        let insetWidth = CGRectGetWidth(insetRect)
         
         verticalStride = CGFloat(insetWidth)/CGFloat(v+1)
         horizontalStride = CGFloat(insetHeight)/CGFloat(h+1)
@@ -148,9 +154,9 @@ class ChartView: UIView {
         //        竖线
         for i in 0...v {
             
-            var x = CGFloat(verticalStride * CGFloat(i+1)) + CGFloat(xInset)
-            var p1 = CGPoint(x: x, y: yInset)
-            var p2 = CGPoint(x: x, y: yInset+insetHeight)
+            let x = CGFloat(verticalStride * CGFloat(i+1)) + CGFloat(xInset)
+            let p1 = CGPoint(x: x, y: yInset)
+            let p2 = CGPoint(x: x, y: yInset+insetHeight)
             path.moveToPoint(p1)
             path.addLineToPoint(p2)
             
@@ -161,9 +167,9 @@ class ChartView: UIView {
         //        横线
         for i in 0...h{
             
-            var y = CGFloat(horizontalStride * CGFloat(i+1)) + CGFloat(yInset)
-            var p1 = CGPoint(x: xInset, y: y)
-            var p2 = CGPoint(x: xInset + insetWidth, y: y )
+            let y = CGFloat(horizontalStride * CGFloat(i+1)) + CGFloat(yInset)
+            let p1 = CGPoint(x: xInset, y: y)
+            let p2 = CGPoint(x: xInset + insetWidth, y: y )
             path.moveToPoint(p1)
             path.addLineToPoint(p2)
         }
@@ -181,7 +187,7 @@ class ChartView: UIView {
         
         
         for i in 0...numberOfLines{
-            var values = self.dataSource?.valuesOfchartView(self, withIndex: i)
+            let values = self.dataSource?.valuesOfchartView(self, withIndex: i)
             
             
             
@@ -189,10 +195,10 @@ class ChartView: UIView {
             if let valueArray = values {
                 var max:Float = 0
                 var min:Float = 0;
-                var count = valueArray.count
-                var localYInset = yInset + 50
-                var insetRect:CGRect = CGRectInset(self.bounds, xInset, localYInset)
-                var xStride = CGRectGetWidth(insetRect)/CGFloat(count-1)
+                let count = valueArray.count
+                let localYInset = yInset + 50
+                let insetRect:CGRect = CGRectInset(self.bounds, xInset, localYInset)
+                let xStride = CGRectGetWidth(insetRect)/CGFloat(count-1)
                 
                 
                 if (count>0){
@@ -229,7 +235,7 @@ class ChartView: UIView {
                 
                 
                 
-                var dValue = max - min
+                let dValue = max - min
                 
                 
                 //                遍历画出所有的数据
@@ -242,12 +248,12 @@ class ChartView: UIView {
                         percent = 0.5
                     }
                     //                    println(percent)
-                    var x = CGFloat(xInset) + (CGFloat(xStride)*CGFloat(i))
+                    let x = CGFloat(xInset) + (CGFloat(xStride)*CGFloat(i))
                     
                     
                     
                     
-                    var y = localYInset + (1-percent) * CGRectGetHeight(insetRect)
+                    let y = localYInset + (1-percent) * CGRectGetHeight(insetRect)
                     
                     
                     
@@ -257,7 +263,7 @@ class ChartView: UIView {
                     if(i==0){
                         path.moveToPoint(point)
                         //                        path.lineWidth = 2;
-                        path.lineCapStyle = kCGLineCapRound
+                        path.lineCapStyle = CGLineCap.Round
                     }else{
                         path.addLineToPoint(point)
                     }

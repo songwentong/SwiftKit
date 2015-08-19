@@ -40,7 +40,7 @@ class ChartViewController: UIViewController,ChartViewDataSource {
                 if(context.isAnimated() == true){
                     self.c.setNeedsDisplay();
                 }else{
-                    println("not animated")
+                    print("not animated")
                 }
                 
         }
@@ -53,7 +53,7 @@ class ChartViewController: UIViewController,ChartViewDataSource {
         var values = [Float]()
         
         
-        for i in 0...150{
+        for _ in 0...150{
             var value = Float(rand()%50)
             value = value * Float(index)
             values.append(value)

@@ -17,29 +17,29 @@ public class WTRequestCenter: NSObject {
     
     
     
-    public func request(
+    public func requestwithMethod(
         method: Method,
         URLString: URLStringConvertible,
         parameters: [String: AnyObject]? = nil,
         completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
     {
-        self.request(method, URLString: URLString, parameters: parameters, headers: nil) { (data, response, error) -> Void in
+        self.requestwithMethod(method, URLString: URLString, parameters: parameters, headers: nil) { (data, response, error) -> Void in
             completionHandler!(data,response,error)
         }
     }
     /*
         func dataTaskWithRequest(request: NSURLRequest, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?) -> NSURLSessionDataTask
     */
-    public func request(
+    public func requestwithMethod(
         method: Method,
         URLString: URLStringConvertible,
         parameters: [String: AnyObject]? = nil,
         headers: [String: String]? = nil,
         completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
     {
-        let mutableURLRequest = URLRequest(method, URLString, headers: headers)
+        let mutableURLRequest = URLRequest(method, URLString: URLString, headers: headers)
         let encodedURLRequest = encode(mutableURLRequest, parameters: parameters).0
-        var task = NSURLSession.sharedSession().dataTaskWithRequest(encodedURLRequest, completionHandler: { (data, response, error) -> Void in
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(encodedURLRequest, completionHandler: { (data, response, error) -> Void in
             completionHandler!(data,response,error)
         })
         task.resume()
@@ -62,12 +62,12 @@ public class WTRequestCenter: NSObject {
         
         func query(parameters: [String: AnyObject]) -> String {
             var components: [(String, String)] = []
-            for key in sorted(Array(parameters.keys), <) {
+            for key in Array(parameters.keys).sort(<) {
                 let value: AnyObject! = parameters[key]
                 components += queryComponents(key, value)
             }
             
-            return join("&", components.map { "\($0)=\($1)" } as [String])
+            return "&".join(components.map { "\($0)=\($1)" } as [String])
         }
         
         func encodesParametersInURL(method: Method) -> Bool {

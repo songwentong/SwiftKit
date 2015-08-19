@@ -20,13 +20,17 @@ class TableViewController: UITableViewController {
         
         list.append("Chart")
    
-        UIView.animateWithDuration(1, animations: { () -> Void in
+        UIView.animateWithDuration(1, animations:
+    { () -> Void in
             
-        }) { (bool) -> Void in
+    })
+    { (bool) -> Void in
             
-        }
+    }
 
-       
+        
+        
+        
     }
     
     override func viewDidLoad() {
@@ -56,7 +60,7 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) 
         cell.textLabel?.text = list[indexPath.row]
         // Configure the cell...
 
