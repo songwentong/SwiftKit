@@ -18,6 +18,8 @@ class TableViewController: UITableViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
+        list.append("login")
         list.append("Chart")
         
         UIView.animateWithDuration(1, animations:
@@ -69,7 +71,16 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        self.performSegueWithIdentifier("chart", sender: nil)
+        switch(indexPath.row){
+        case 0:
+            self.performSegueWithIdentifier("login", sender: nil)
+            break
+        case 1:
+            self.performSegueWithIdentifier("chart", sender: nil)
+            break
+        default: break
+        }
+        
     }
     
     /*
