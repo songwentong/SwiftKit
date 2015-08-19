@@ -85,6 +85,15 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		E17802341B842413008EA7B8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				E1A993FD1B7F6C7D00D93ACD /* TableViewController.swift */,
+				E1A994011B7F726500D93ACD /* ChartViewController.swift */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		E1A993CF1B7F6C2100D93ACD = {
 			isa = PBXGroup;
 			children = (
@@ -142,9 +151,8 @@
 		E1A993FF1B7F6C8300D93ACD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E17802341B842413008EA7B8 /* New Group */,
 				E17802311B84227A008EA7B8 /* Login */,
-				E1A993FD1B7F6C7D00D93ACD /* TableViewController.swift */,
-				E1A994011B7F726500D93ACD /* ChartViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
