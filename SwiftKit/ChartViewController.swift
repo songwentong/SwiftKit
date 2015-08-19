@@ -58,9 +58,9 @@ class ChartViewController: UIViewController,ChartViewDataSource {
     func colorOfChartView(chartView:ChartView, withIndex:Int) -> UIColor?{
 //        var color:UIColor
         var colors = Array<UIColor>()
-        colors.append(UIColor.whiteColor())
+        colors.append(UIColor.blackColor())
         colors.append(UIColor.greenColor())
-        colors.append(UIColor.orangeColor())
+        colors.append(UIColor.blueColor())
         
         return colors[withIndex]
         
@@ -70,7 +70,7 @@ class ChartViewController: UIViewController,ChartViewDataSource {
         var values = [Float]()
         
         
-        for _ in 0...159{
+        for _ in 0...49{
             var value = Float(rand()%50)
             value = value * Float(index+1)
             values.append(value)

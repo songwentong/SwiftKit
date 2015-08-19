@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ChartViewDataSource:NSObjectProtocol
+ public protocol ChartViewDataSource:NSObjectProtocol
 {
 //    竖直的分割线条数
     func numberOfVerticalLinesInChartView(chartView: ChartView) -> Int // Default is 3
@@ -21,6 +21,18 @@ protocol ChartViewDataSource:NSObjectProtocol
 //    每条线的颜色
     func colorOfChartView(chartView:ChartView, withIndex:Int) -> UIColor?
     
+
+    /*
+    @available(iOS 2.0, *)
+    optional public func numberOfSectionsInTableView(tableView: UITableView) -> Int // Default is 1 if not implemented
+    
+    @available(iOS 2.0, *)
+    optional public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? // fixed font style. use custom view (UILabel) if you want something different
+    @available(iOS 2.0, *)
+    optional public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String?
+    
+
+    */
     
 }
 
@@ -34,15 +46,13 @@ public class ChartView: UIView {
     var debugMode:Bool!
     var panGesture:UIPanGestureRecognizer!
     var pinchGesture:UIPinchGestureRecognizer!
-    
-    
+
+
     override init(frame: CGRect) {
         super.init(frame:CGRect())
         self.frame = frame;
         
-        
         configModel()
-        
         
     }
     
@@ -62,7 +72,7 @@ public class ChartView: UIView {
         self.backgroundColor = UIColor.yellowColor()
         yInset = 10;
         xInset = 15;
-        lineWidth = 0.5;
+        lineWidth = 1;
         debugMode = true
     }
     
@@ -107,12 +117,13 @@ public class ChartView: UIView {
         drawOuterFrame(path)
         drawSeparateLines(path);
         drawDataLines(path)
-        path.stroke()
+        
     }
     
     
     //    画外框
     func drawOuterFrame(path:UIBezierPath){
+        path.removeAllPoints()
         let bounds = self.bounds
         let width = CGRectGetWidth(bounds)
         let height = CGRectGetHeight(bounds)
@@ -122,12 +133,13 @@ public class ChartView: UIView {
         path.addLineToPoint(CGPointMake(width-xInset, yInset))
         path.addLineToPoint(CGPointMake(xInset, yInset))
         
-        
+        path.stroke()
         
     }
     
     //    画分隔线
     func drawSeparateLines(path:UIBezierPath){
+        path.removeAllPoints()
         //        水平方向的分割线条数
         var h:Int = 4
         //        竖直方向的分割线条数
@@ -180,25 +192,27 @@ public class ChartView: UIView {
             path.moveToPoint(p1)
             path.addLineToPoint(p2)
         }
-        
+        path.stroke()
     }
     
     //    画数据
     func drawDataLines(path:UIBezierPath){
         var numberOfLines = 0
-        if(self.dataSource?.respondsToSelector("numberOfLinesInChartView")==true){
+
             numberOfLines = self.dataSource!.numberOfLinesInChartView(self)
-        }
+
         
         
         
         
-        for i in 0...numberOfLines{
+        for i in 0...numberOfLines-1{
+            
             let values = self.dataSource?.valuesOfchartView(self, withIndex: i)
             
             
             
-            
+            let color = dataSource?.colorOfChartView(self, withIndex: i)
+            color?.setStroke()
             if let valueArray = values {
                 var max:Float = 0
                 var min:Float = 0;
@@ -212,6 +226,8 @@ public class ChartView: UIView {
                     min = valueArray[0]
                 }
                 
+                
+                
                 //                遍历去的最大值和最小值
                 for value in valueArray {
                     if(value > max)
@@ -224,29 +240,19 @@ public class ChartView: UIView {
                 }
                 
                 
-                if(max>0){
-                    //                    max = 1.1*max
-                }else{
-                    //                    max = 0.9*max
-                }
-                
-                
-                if(min>0){
-                    //                    min = 0.9*min
-                }else{
-                    //                    min = 1.1*min
-                }
-                
-                
-                
                 
                 
                 
                 let dValue = max - min
                 
+                path.removeAllPoints()
+                
+                
                 
                 //                遍历画出所有的数据
                 for i in 0...count-1 {
+                    
+                    
                     var point:CGPoint
                     
                     var percent:CGFloat = CGFloat(valueArray[i] - min)/CGFloat(dValue)
@@ -257,15 +263,9 @@ public class ChartView: UIView {
                     //                    println(percent)
                     let x = CGFloat(xInset) + (CGFloat(xStride)*CGFloat(i))
                     
-                    
-                    
-                    
                     let y = localYInset + (1-percent) * CGRectGetHeight(insetRect)
                     
-                    
-                    
                     point = CGPoint(x: x, y: y)
-                    
                     
                     if(i==0){
                         path.moveToPoint(point)
@@ -274,10 +274,17 @@ public class ChartView: UIView {
                     }else{
                         path.addLineToPoint(point)
                     }
+                    
                 }
+                
+                path.stroke()
                 
                 
             }
+           
         }
+        
+        
     }
+    
 }

@@ -21,6 +21,7 @@ class TableViewController: UITableViewController {
         
         list.append("login")
         list.append("Chart")
+        list.append("draw")
         
         UIView.animateWithDuration(1, animations:
             { () -> Void in
@@ -78,6 +79,9 @@ class TableViewController: UITableViewController {
             break
         case 1:
             self.performSegueWithIdentifier("chart", sender: nil)
+            break
+        case 2:
+            self.performSegueWithIdentifier("draw", sender: nil)
             break
         default: break
         }

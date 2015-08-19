@@ -52,6 +52,7 @@
                     <connections>
                         <segue destination="bYe-6P-h6j" kind="show" identifier="chart" id="6Mc-F2-OUw"/>
                         <segue destination="9IC-nY-wac" kind="presentation" identifier="login" id="K6B-h8-TTE"/>
+                        <segue destination="l00-Iw-gUe" kind="show" identifier="draw" id="GXr-OU-0eT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aug-Ut-ovx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,6 +148,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpb-MZ-jzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2286.5" y="374.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oUX-MT-oOc">
+            <objects>
+                <viewController id="l00-Iw-gUe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M9q-JH-Wap"/>
+                        <viewControllerLayoutGuide type="bottom" id="RXz-bo-aGX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EzI-nr-heB">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHY-zL-INZ" customClass="TestDraw" customModule="SwiftKit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="66" y="270" width="240" height="128"/>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bHY-zL-INZ" firstAttribute="top" secondItem="M9q-JH-Wap" secondAttribute="bottom" id="0Dj-4J-yKS"/>
+                            <constraint firstAttribute="trailing" secondItem="bHY-zL-INZ" secondAttribute="trailing" id="9JO-CJ-185"/>
+                            <constraint firstItem="RXz-bo-aGX" firstAttribute="top" secondItem="bHY-zL-INZ" secondAttribute="bottom" id="9dE-r7-g61"/>
+                            <constraint firstItem="bHY-zL-INZ" firstAttribute="leading" secondItem="EzI-nr-heB" secondAttribute="leading" id="On1-ss-cUg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bHY-zL-INZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="0Dj-4J-yKS"/>
+                                <exclude reference="9JO-CJ-185"/>
+                                <exclude reference="On1-ss-cUg"/>
+                                <exclude reference="9dE-r7-g61"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="bHY-zL-INZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="0Dj-4J-yKS"/>
+                                <include reference="9JO-CJ-185"/>
+                                <include reference="On1-ss-cUg"/>
+                                <include reference="9dE-r7-g61"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEn-BH-rCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3037.5" y="223.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="NaU-im-n7F">
