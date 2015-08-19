@@ -9,22 +9,19 @@
 import UIKit
 
 class ChartViewController: UIViewController,ChartViewDataSource {
-
-    var c:ChartView!
     
+    @IBOutlet weak var chartView: ChartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        c = ChartView(frame: self.view.bounds)
-        c.dataSource = self
-        self.view.addSubview(c)
-        
+  
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        chartView.dataSource = self
+        self.view.addSubview(chartView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,16 +31,23 @@ class ChartViewController: UIViewController,ChartViewDataSource {
     
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator){
-        coordinator.animateAlongsideTransitionInView(c, animation: { (context) -> Void in
-            self.c.frame = self.view.bounds;
+        coordinator.animateAlongsideTransitionInView(self.chartView, animation: { (context) -> Void in
+            
+            self.chartView.frame = self.view.bounds;
+            
+            
             }) { (context) -> Void in
+                
+                
+                
                 if(context.isAnimated() == true){
-                    self.c.setNeedsDisplay();
+                    self.chartView.setNeedsDisplay();
                 }else{
                     print("not animated")
                 }
                 
         }
+        
     }
     
     func numberOfVerticalLinesInChartView(chartView: ChartView) -> Int {return 0}
@@ -53,10 +57,11 @@ class ChartViewController: UIViewController,ChartViewDataSource {
         var values = [Float]()
         
         
-        for _ in 0...150{
-            var value = Float(rand()%50)
-            value = value * Float(index)
-            values.append(value)
+        for _ in 0...159{
+//            var value = Float(rand()%50)
+//            value = value * Float(index)
+//            values.append(value)
+            values.append(1)
         }
         //        values.append(-100)
         //        values.append(-20)

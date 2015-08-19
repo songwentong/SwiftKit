@@ -23,7 +23,7 @@ protocol ChartViewDataSource:NSObjectProtocol
     
 }
 
-class ChartView: UIView {
+public class ChartView: UIView {
     
     var dataSource:ChartViewDataSource?
     var delegate:AnyObject?
@@ -45,10 +45,16 @@ class ChartView: UIView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configModel()
     }
+    
+    
+    public func reloadData(){
+        
+    }
+    
     
     
     func configModel(){
@@ -88,7 +94,7 @@ class ChartView: UIView {
     
     
     */
-    override func drawRect(rect: CGRect) {
+    override public func drawRect(rect: CGRect) {
         if(debugMode==true){
             print("drawRect")
         }
