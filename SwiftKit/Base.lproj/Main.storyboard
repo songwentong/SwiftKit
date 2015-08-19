@@ -93,6 +93,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chartView" destination="xR5-H9-sJq" id="Q2S-ZZ-jpf"/>
                     </connections>

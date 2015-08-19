@@ -58,10 +58,11 @@ class ChartViewController: UIViewController,ChartViewDataSource {
         
         
         for _ in 0...159{
-//            var value = Float(rand()%50)
-//            value = value * Float(index)
-//            values.append(value)
-            values.append(1)
+            var value = Float(rand()%50)
+            value = value * Float(index+1)
+            values.append(value)
+//            values.append(1)
+            print(value)
         }
         //        values.append(-100)
         //        values.append(-20)
