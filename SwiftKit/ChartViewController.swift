@@ -52,7 +52,20 @@ class ChartViewController: UIViewController,ChartViewDataSource {
     
     func numberOfVerticalLinesInChartView(chartView: ChartView) -> Int {return 0}
     func numberOfHorizontalLinesInChartView(chartView: ChartView) -> Int {return 0}
-    func numberOfLinesInChartView(chartView:ChartView) -> Int {return 3}
+    func numberOfLinesInChartView(chartView:ChartView) -> Int {
+        return 3
+    }
+    func colorOfChartView(chartView:ChartView, withIndex:Int) -> UIColor?{
+//        var color:UIColor
+        var colors = Array<UIColor>()
+        colors.append(UIColor.whiteColor())
+        colors.append(UIColor.greenColor())
+        colors.append(UIColor.orangeColor())
+        
+        return colors[withIndex]
+        
+    }
+    
     func valuesOfchartView(chartView:ChartView, withIndex index:Int) -> [Float]?{
         var values = [Float]()
         

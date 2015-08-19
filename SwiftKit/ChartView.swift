@@ -18,7 +18,7 @@ protocol ChartViewDataSource:NSObjectProtocol
     func numberOfLinesInChartView(chartView:ChartView) -> Int // Default is 0
 //    对应的竖直
     func valuesOfchartView(chartView:ChartView, withIndex:Int) -> [Float]?
-    
+    func colorOfChartView(chartView:ChartView, withIndex:Int) -> UIColor?
     
     
 }
