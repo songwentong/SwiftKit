@@ -16,8 +16,9 @@ protocol ChartViewDataSource:NSObjectProtocol
     func numberOfHorizontalLinesInChartView(chartView: ChartView) -> Int // Default is 3
 //    线条的条数
     func numberOfLinesInChartView(chartView:ChartView) -> Int // Default is 0
-//    对应的竖直
+//    对应的数值
     func valuesOfchartView(chartView:ChartView, withIndex:Int) -> [Float]?
+//    每条线的颜色
     func colorOfChartView(chartView:ChartView, withIndex:Int) -> UIColor?
     
     
