@@ -74,6 +74,7 @@ class TableViewController: UITableViewController {
         switch(indexPath.row){
         case 0:
             self.performSegueWithIdentifier("login", sender: nil)
+
             break
         case 1:
             self.performSegueWithIdentifier("chart", sender: nil)
