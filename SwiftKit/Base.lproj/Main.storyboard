@@ -78,19 +78,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xR5-H9-sJq" firstAttribute="top" secondItem="rzQ-74-Xas" secondAttribute="bottom" id="3mk-pi-ymj"/>
-                            <constraint firstItem="igc-x0-bha" firstAttribute="top" secondItem="xR5-H9-sJq" secondAttribute="bottom" id="FjZ-J0-13w"/>
                             <constraint firstAttribute="trailing" secondItem="xR5-H9-sJq" secondAttribute="trailing" id="OlO-76-Yvc"/>
+                            <constraint firstAttribute="bottom" secondItem="xR5-H9-sJq" secondAttribute="bottom" id="cOi-Mt-5SK"/>
                             <constraint firstItem="xR5-H9-sJq" firstAttribute="leading" secondItem="EKd-fa-fIw" secondAttribute="leading" id="s73-87-zFO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cOi-Mt-5SK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="cOi-Mt-5SK"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chartView" destination="xR5-H9-sJq" id="Q2S-ZZ-jpf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxG-dg-1AL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3005" y="-381"/>
+            <point key="canvasLocation" x="3003.75" y="-381.375"/>
         </scene>
         <!--Item-->
         <scene sceneID="lMi-eM-aqP">
