@@ -8,6 +8,19 @@
 
 import UIKit
 
-class ModelCenter: NSObject {
-
+public class ModelCenter: NSObject {
+    public static let sharedInstance: ModelCenter = {
+        return ModelCenter()
+        }()
+    
+    var userName:String
+    var userPwd:String
+    
+    
+    override init() {
+        userName = ""
+        userPwd = ""
+        
+        super.init()
+    }
 }
