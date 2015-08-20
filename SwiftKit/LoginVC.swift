@@ -3,7 +3,7 @@
 //  SwiftKit
 //
 //  Created by SongWentong on 8/19/15.
-//  Copyright © 2015 QuantGroup. All rights reserved.
+//  Copyright © 2015 mike. All rights reserved.
 //
 
 import UIKit

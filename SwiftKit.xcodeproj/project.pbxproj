@@ -247,7 +247,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = QuantGroup;
+				ORGANIZATIONNAME = swt;
 				TargetAttributes = {
 					E1A993D71B7F6C2100D93ACD = {
 						CreatedOnToolsVersion = 6.4;
