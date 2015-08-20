@@ -37,26 +37,41 @@ import UIKit
 }
 
 public class ChartView: UIView {
-    
+//数据源
     var dataSource:ChartViewDataSource?
     var delegate:AnyObject?
+//    y方向边界缩进
     var yInset:CGFloat!
+//    x方向边界缩进
     var xInset:CGFloat!
+//    线条宽度
     var lineWidth:CGFloat!
+//    debug模式
     var debugMode:Bool!
+//    拖动手势
     var panGesture:UIPanGestureRecognizer!
+//    所放手势
     var pinchGesture:UIPinchGestureRecognizer!
+//    最大显示数量
+    var maxNumberOfValue:Int = 1000
+//    最小显示数量
+    var minNumberOfValue:Int = 15
+//    当前显示数量
+    var currentNumberOfValue:Int = 100
+    
 
 
     override init(frame: CGRect) {
+        
         super.init(frame:CGRect())
         self.frame = frame;
-        
         configModel()
+        
         
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        
         super.init(coder: aDecoder)
         configModel()
     }
@@ -72,8 +87,31 @@ public class ChartView: UIView {
         self.backgroundColor = UIColor.yellowColor()
         yInset = 10;
         xInset = 15;
-        lineWidth = 1;
+        lineWidth = 0.8;
         debugMode = true
+        
+        panGesture = UIPanGestureRecognizer(target: self, action: "reciveGestureRecognizer:")
+        pinchGesture = UIPinchGestureRecognizer(target: self, action: "reciveGestureRecognizer:")
+        self.addGestureRecognizer(panGesture)
+        self.addGestureRecognizer(pinchGesture)
+    }
+    
+    
+    func reciveGestureRecognizer(gesture:UIGestureRecognizer){
+
+//        let classForCoder:AnyClass = gesture.classForCoder
+        if(gesture.isKindOfClass(UIPanGestureRecognizer.classForCoder())){
+            
+            print("pan----")
+        }
+        
+        
+        if(gesture.isKindOfClass(UIPinchGestureRecognizer.classForCoder())){
+            print("pin----")
+        }
+        
+        
+    
     }
     
     
