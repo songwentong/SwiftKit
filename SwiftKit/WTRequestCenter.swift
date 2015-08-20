@@ -14,39 +14,37 @@ public class WTRequestCenter: NSObject {
     public static let sharedInstance: WTRequestCenter = {
         return WTRequestCenter()
         }()
-    
-    
-    
-    public func requestwithMethod(
-        method: Method,
-        URLString: URLStringConvertible,
-        parameters: [String: AnyObject]? = nil,
-        completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
-    {
-        self.requestwithMethod(method, URLString: URLString, parameters: parameters, headers: nil) { (data, response, error) -> Void in
-            completionHandler!(data,response,error)
-        }
+    var httpHeaders:[String:String]?
+    override init() {
+        super.init()
     }
-    /*
-        func dataTaskWithRequest(request: NSURLRequest, completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?) -> NSURLSessionDataTask
-    */
+    
+
+    
     public func requestwithMethod(
-        method: Method,
-        URLString: URLStringConvertible,
-        parameters: [String: AnyObject]? = nil,
-        headers: [String: String]? = nil,
-        completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
+        method method: Method,
+        url URLString: URLStringConvertible,
+        parameter parameters: [String: AnyObject]? = nil,
+        completion completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
     {
-        let mutableURLRequest = URLRequest(method, URLString: URLString, headers: headers)
+        let mutableURLRequest = URLRequest(method, URLString: URLString, headers: nil)
         let encodedURLRequest = encode(mutableURLRequest, parameters: parameters).0
+        
+        for(key,value) in httpHeaders!{
+            encodedURLRequest.setValue(value, forHTTPHeaderField: key)
+        }
+        
         let task = NSURLSession.sharedSession().dataTaskWithRequest(encodedURLRequest, completionHandler: { (data, response, error) -> Void in
             completionHandler!(data,response,error)
         })
+        
         task.resume()
     }
     
+    //TODO  默认http头
+    func defaultHTTPHeaders(){
     
-    
+    }
     
     
     
