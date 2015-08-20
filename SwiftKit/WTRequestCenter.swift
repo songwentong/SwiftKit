@@ -14,12 +14,18 @@ public class WTRequestCenter: NSObject {
     public static let sharedInstance: WTRequestCenter = {
         return WTRequestCenter()
         }()
-    var httpHeaders:[String:String]?
+    
+    var httpHeaders:[String:String]? = [String:String]()
     override init() {
         super.init()
+
+//        self.requestwithMethod(method: Method.GET, url: "") { (d, r, e) -> Void in
+//            
+//        }
+
     }
     
-
+    
     
     public func requestwithMethod(
         method method: Method,
@@ -43,7 +49,7 @@ public class WTRequestCenter: NSObject {
     
     //TODO  默认http头
     func defaultHTTPHeaders(){
-    
+        
     }
     
     
