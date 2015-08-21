@@ -13,6 +13,7 @@
 		E17802331B842291008EA7B8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17802321B842291008EA7B8 /* LoginVC.swift */; };
 		E17802371B842DEE008EA7B8 /* ModelCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17802361B842DEE008EA7B8 /* ModelCenter.swift */; };
 		E178023A1B8465CC008EA7B8 /* TestDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17802391B8465CC008EA7B8 /* TestDraw.swift */; };
+		E181A94C1B86DD2E00325E9E /* HistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181A94B1B86DD2E00325E9E /* HistogramView.swift */; };
 		E1A993DE1B7F6C2100D93ACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A993DD1B7F6C2100D93ACD /* AppDelegate.swift */; };
 		E1A993E31B7F6C2100D93ACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A993E11B7F6C2100D93ACD /* Main.storyboard */; };
 		E1A993E51B7F6C2100D93ACD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A993E41B7F6C2100D93ACD /* Images.xcassets */; };
@@ -40,6 +41,7 @@
 		E17802321B842291008EA7B8 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E17802361B842DEE008EA7B8 /* ModelCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCenter.swift; sourceTree = "<group>"; };
 		E17802391B8465CC008EA7B8 /* TestDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDraw.swift; sourceTree = "<group>"; };
+		E181A94B1B86DD2E00325E9E /* HistogramView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistogramView.swift; sourceTree = "<group>"; };
 		E1A993D81B7F6C2100D93ACD /* SwiftKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A993DC1B7F6C2100D93ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A993DD1B7F6C2100D93ACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A994051B7F72C600D93ACD /* ChartView.swift */,
+				E181A94B1B86DD2E00325E9E /* HistogramView.swift */,
 			);
 			name = ChartView;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				E1A994061B7F72C600D93ACD /* ChartView.swift in Sources */,
 				E17802371B842DEE008EA7B8 /* ModelCenter.swift in Sources */,
 				E12BB9711B800B4B00A60B4F /* WTNetWork.swift in Sources */,
+				E181A94C1B86DD2E00325E9E /* HistogramView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

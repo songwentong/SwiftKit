@@ -65,7 +65,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel!.text = list[indexPath.row]
         // Configure the cell...
         
         return cell

@@ -27,11 +27,7 @@ public class WTRequestCenter: NSObject {
     
     
     
-    public func requestwithMethod(
-        method method: Method,
-        url URLString: URLStringConvertible,
-        parameter parameters: [String: AnyObject]? = nil,
-        completion completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
+    public func requestwithMethod( method:Method,URLString: URLStringConvertible, parameters: [String: AnyObject]?,completionHandler: ((NSData!, NSURLResponse!, NSError!) -> Void)?)
     {
         let mutableURLRequest = URLRequest(method, URLString: URLString, headers: nil)
         let encodedURLRequest = encode(mutableURLRequest, parameters: parameters).0
