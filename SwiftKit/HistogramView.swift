@@ -13,7 +13,12 @@ import UIKit
     数据源
 */
 protocol HistogramViewDataSource:NSObjectProtocol{
+//    柱状图数量
     func numberOfHistogramInHistogram(his:HistogramView)->Int
+//    柱状图数值
+//    柱状图颜色
+    
+
 }
 
 /*!
@@ -32,17 +37,37 @@ public class HistogramView: UIView {
         configModel()
     }
     
+    
+    
+    var histogramViews:[UIView]?
+    
 //    处理数据
     func configModel(){
+        histogramViews = [UIView]()
+    }
+    
+    
+    public func reloadData(){
+        for view in histogramViews!{
+            view.removeFromSuperview()
+        }
+        
         
     }
     
+    
+    
+    
+    
+    
+    
+    
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override public func drawRect(rect: CGRect) {
+//    override public func drawRect(rect: CGRect) {
         // Drawing code
         
-    }
+//    }
     
 
 }
