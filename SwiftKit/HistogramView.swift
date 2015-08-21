@@ -16,7 +16,9 @@ protocol HistogramViewDataSource:NSObjectProtocol{
 //    柱状图数量
     func numberOfHistogramInHistogram(his:HistogramView)->Int
 //    柱状图数值
+    func histogramView(his:HistogramView , valueOfIndex:Int)->Float
 //    柱状图颜色
+    func histogramView(his:HistogramView , colorOfIndex:Int)->UIColor
     
 
 }
@@ -38,7 +40,7 @@ public class HistogramView: UIView {
     }
     
     
-    
+    var datasource:HistogramViewDataSource?
     var histogramViews:[UIView]?
     
 //    处理数据
@@ -51,7 +53,20 @@ public class HistogramView: UIView {
         for view in histogramViews!{
             view.removeFromSuperview()
         }
-        
+//        得到柱形图数量
+        let count = self.datasource?.numberOfHistogramInHistogram(self)
+//        遍历数值
+        for i in 0...count!-1{
+            let value = self.datasource?.histogramView(self, valueOfIndex: i)
+            let view = UIView()
+            
+//            获取颜色
+            view.backgroundColor = self.datasource?.histogramView(self, colorOfIndex: i)
+            
+            histogramViews?.append(view)
+            
+            print(value)
+        }
         
     }
     
